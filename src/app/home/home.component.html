@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input list="countries" name="country" class="form-control" (change)="loadIndicatorsByCountry($event)">
+      <datalist id="countries">
+        <option *ngFor="let c of countries" [value]="c.id">
+          {{ c.id }} - {{ c.name }}
+        </option>
+      </datalist>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="isLoading">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="spinner-border text-success" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<div class="row" *ngIf="indicators.length > 0">
+  <div class="col-md-12">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Country</th>
+          <th>Year</th>
+          <th>Indicator</th>
+          <th>%</th>
+          <th>Obs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of indicators">
+          <td>{{i.country.value}} ({{i.country.id}})</td>
+          <td>{{i.date}}</td>
+          <td>{{i.indicator.id}} - {{i.indicator.value}}</td>
+          <td>{{i.value || '-'}}</td>
+          <td>{{i.obs_status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
