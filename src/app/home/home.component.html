@@ -20,6 +20,17 @@
   </div>
   <div class="col-md-4"></div>
 </div>
+
+<div class="alert alert-success" role="alert" *ngIf="header != null">
+  <h4 class="alert-heading">Header</h4>
+  <p><strong>Page: </strong> {{header.page}} / {{header.pages}}</p>
+  <p><strong>Per Page: </strong> {{header.per_page}}</p>
+  <p><strong>Total: </strong> {{header.total}}</p>
+  <p><strong>SourceId: </strong> {{header.sourceid}}</p>
+  <p><strong>Sourcename: </strong> {{header.sourcename}}</p>
+  <p><strong>Last Updated: </strong> {{header.lastupdated}}</p>
+</div>
+
 <div class="row" *ngIf="indicators.length > 0">
   <div class="col-md-12">
     <table class="table table-striped table-sm">

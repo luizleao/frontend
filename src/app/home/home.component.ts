@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   countries: Array<Country> = [];
   country: any = {};
   indicators: any = [];
+  header: any = null;
   isLoading: boolean = false;
 
   constructor(private countryService: CountryService, private indicatorsService: IndicatorsService) { }
@@ -34,6 +35,8 @@ export class HomeComponent implements OnInit {
       next: (data) => {
         console.log("Loading...");
         this.isLoading = true;
+        this.header = data[0];
+        console.log(this.header);
         this.indicators = data[1];
         console.log(this.indicators.length);
         console.log(this.indicators);
